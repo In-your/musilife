@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/mus.css">
+  <style>
+    /*!
+       * chiefSlider (https://itchief.ru/lessons/php/feedback-form-for-website)
+       * Copyright 2018 Alexander Maltsev
+       * Licensed under MIT (https://github.com/itchief/feedback-form/blob/master/LICENSE)
+       */
+
+    /* стили для элемента body */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      color: #fff;
+      height: 3000px;
+    }
+
+    /* стили основного контейнера слайдера */
+    .slider {
+      position: relative;
+      overflow: hidden;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* стили для обёртки, в которой заключены слайды */
+    .slider__wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* стили для контейнера слайдов */
+    .slider__items {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    /* стили для слайдов */
+    .slider__item {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    /* стили для кнопок "вперед" и "назад" */
+    .slider__control {
+      position: absolute;
+      top: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      color: #fff;
+      text-align: center;
+      opacity: 0.5;
+      height: 50px;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .slider__control_show {
+      display: flex;
+    }
+
+    .slider__control:hover,
+    .slider__control:focus {
+      color: #fff;
+      text-decoration: none;
+      outline: 0;
+      opacity: 0.9;
+    }
+
+    .slider__control_prev {
+      left: 0;
+    }
+
+    .slider__control_next {
+      right: 0;
+    }
+
+    .slider__control::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: transparent no-repeat center center;
+      background-size: 100% 100%;
+    }
+
+    .slider__control_prev::before {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+    }
+
+    .slider__control_next::before {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+    }
+
+    /* стили для индикаторов */
+    .slider__indicators {
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      left: 0;
+      z-index: 15;
+      display: flex;
+      justify-content: center;
+      padding-left: 0;
+      margin-right: 15%;
+      margin-left: 15%;
+      list-style: none;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .slider__indicators li {
+      box-sizing: content-box;
+      flex: 0 1 auto;
+      width: 30px;
+      height: 4px;
+      margin-right: 3px;
+      margin-left: 3px;
+      text-indent: -999px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.5);
+      background-clip: padding-box;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+    }
+
+    .slider__indicators li.active {
+      background-color: #fff;
+    }
+
+    .img-fluid {
+      display: inline-block;
+      height: auto;
+      max-width: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <style>
+    body {
+      background: url(https://freedesignfile.com/upload/2017/04/Notes-and-butterflies-music-background-vector-15.jpg);
+    }
+  </style>
+  <ul id="musical">
+    <li><img src="зображення_viber_2021-02-05_18-53-24.jpg" width="50"></li>
+    <li><a href="40.html">Главная</a></li>
+    <li><a href="news.html">Новости</a></li>
+    <li><a href="us.html">О нас</a></li>
+    <li><a href="register.html">Регистрация</a></li>
+  </ul>
+  <div class="slider">
+    <div class="slider__wrapper">
+      <div class="slider__items">
+        <div class="slider__item">
+          <h1 align="center"> <img class="img-fluid" src="Без названия (6).jpg" alt="c1"></h1>
+        </div>
+        <div class="slider__item">
+          <h1 align="center"> <img class="img-fluid" src="Без названия (2).jpg" alt="c2"></h1>
+        </div>
+        <div class="slider__item">
+          <h1 align="center"> <img class="img-fluid" src="Без названия (4).jpg" alt="c3"></h1>
+        </div>
+        <div class="slider__item">
+          <h1 align="center"> <img class="img-fluid" src="Без названия.jpg" alt="c4"></h1>
+        </div>
+        <div class="slider__item">
+          <h1 align="center"> <img class="img-fluid" src="Без названия (8).jpg" alt="c4"></h1>
+        </div>
+      </div>
+    </div>
+    <a class="slider__control slider__control_prev" href="#" role="button"></a>
+    <a class="slider__control slider__control_next" href="#" role="button"></a>
+  </div>
+
+  <script>
+    'use strict';
+    var slideShow = (function () {
+      return function (selector, config) {
+        var
+          _slider = document.querySelector(selector), // основный элемент блока
+          _sliderContainer = _slider.querySelector('.slider__items'), // контейнер для .slider-item
+          _sliderItems = _slider.querySelectorAll('.slider__item'), // коллекция .slider-item
+          _sliderControls = _slider.querySelectorAll('.slider__control'), // элементы управления
+          _currentPosition = 0, // позиция левого активного элемента
+          _transformValue = 0, // значение транфсофрмации .slider_wrapper
+          _transformStep = 100, // величина шага (для трансформации)
+          _itemsArray = [], // массив элементов
+          _timerId,
+          _indicatorItems,
+          _indicatorIndex = 0,
+          _indicatorIndexMax = _sliderItems.length - 1,
+          _stepTouch = 50,
+          _config = {
+            isAutoplay: false, // автоматическая смена слайдов
+            directionAutoplay: 'next', // направление смены слайдов
+            delayAutoplay: 5000, // интервал между автоматической сменой слайдов
+            isPauseOnHover: true // устанавливать ли паузу при поднесении курсора к слайдеру
+          };
+
+        // настройка конфигурации слайдера в зависимости от полученных ключей
+        for (var key in config) {
+          if (key in _config) {
+            _config[key] = config[key];
+          }
+        }
+
+        // наполнение массива _itemsArray
+        for (var i = 0, length = _sliderItems.length; i < length; i++) {
+          _itemsArray.push({ item: _sliderItems[i], position: i, transform: 0 });
+        }
+
+        // переменная position содержит методы с помощью которой можно получить минимальный и максимальный индекс элемента, а также соответствующему этому индексу позицию
+        var position = {
+          getItemIndex: function (mode) {
+            var index = 0;
+            for (var i = 0, length = _itemsArray.length; i < length; i++) {
+              if ((_itemsArray[i].position < _itemsArray[index].position && mode === 'min') || (_itemsArray[i].position > _itemsArray[index].position && mode === 'max')) {
+                index = i;
+              }
+            }
+            return index;
+          },
+          getItemPosition: function (mode) {
+            return _itemsArray[position.getItemIndex(mode)].position;
+          }
+        };
+
+        // функция, выполняющая смену слайда в указанном направлении
+        var _move = function (direction) {
+          var nextItem, currentIndicator = _indicatorIndex;;
+          if (direction === 'next') {
+            _currentPosition++;
+            if (_currentPosition > position.getItemPosition('max')) {
+              nextItem = position.getItemIndex('min');
+              _itemsArray[nextItem].position = position.getItemPosition('max') + 1;
+              _itemsArray[nextItem].transform += _itemsArray.length * 100;
+              _itemsArray[nextItem].item.style.transform = 'translateX(' + _itemsArray[nextItem].transform + '%)';
+            }
+            _transformValue -= _transformStep;
+            _indicatorIndex = _indicatorIndex + 1;
+            if (_indicatorIndex > _indicatorIndexMax) {
+              _indicatorIndex = 0;
+            }
+          } else {
+            _currentPosition--;
+            if (_currentPosition < position.getItemPosition('min')) {
+              nextItem = position.getItemIndex('max');
+              _itemsArray[nextItem].position = position.getItemPosition('min') - 1;
+              _itemsArray[nextItem].transform -= _itemsArray.length * 100;
+              _itemsArray[nextItem].item.style.transform = 'translateX(' + _itemsArray[nextItem].transform + '%)';
+            }
+            _transformValue += _transformStep;
+            _indicatorIndex = _indicatorIndex - 1;
+            if (_indicatorIndex < 0) {
+              _indicatorIndex = _indicatorIndexMax;
+            }
+          }
+          _sliderContainer.style.transform = 'translateX(' + _transformValue + '%)';
+          _indicatorItems[currentIndicator].classList.remove('active');
+          _indicatorItems[_indicatorIndex].classList.add('active');
+        };
+
+        // функция, осуществляющая переход к слайду по его порядковому номеру
+        var _moveTo = function (index) {
+          var i = 0, direction = (index > _indicatorIndex) ? 'next' : 'prev';
+          while (index !== _indicatorIndex && i <= _indicatorIndexMax) {
+            _move(direction);
+            i++;
+          }
+        };
+
+        // функция для запуска автоматической смены слайдов через промежутки времени
+        var _startAutoplay = function () {
+          if (!_config.isAutoplay) {
+            return;
+          }
+          _stopAutoplay();
+          _timerId = setInterval(function () {
+            _move(_config.directionAutoplay);
+          }, _config.delayAutoplay);
+        };
+
+        // функция, отключающая автоматическую смену слайдов
+        var _stopAutoplay = function () {
+          clearInterval(_timerId);
+        };
+
+        // функция, добавляющая индикаторы к слайдеру
+        var _addIndicators = function () {
+          var indicatorsContainer = document.createElement('ol');
+          indicatorsContainer.classList.add('slider__indicators');
+          for (var i = 0, length = _sliderItems.length; i < length; i++) {
+            var sliderIndicatorsItem = document.createElement('li');
+            if (i === 0) {
+              sliderIndicatorsItem.classList.add('active');
+            }
+            sliderIndicatorsItem.setAttribute("data-slide-to", i);
+            indicatorsContainer.appendChild(sliderIndicatorsItem);
+          }
+          _slider.appendChild(indicatorsContainer);
+          _indicatorItems = _slider.querySelectorAll('.slider__indicators > li')
+        };
+
+        var _isTouchDevice = function () {
+          return !!('ontouchstart' in window || navigator.maxTouchPoints);
+        };
+
+        // функция, осуществляющая установку обработчиков для событий 
+        var _setUpListeners = function () {
+          var _startX = 0;
+          if (_isTouchDevice()) {
+            _slider.addEventListener('touchstart', function (e) {
+              _startX = e.changedTouches[0].clientX;
+              _startAutoplay();
+            });
+            _slider.addEventListener('touchend', function (e) {
+              var
+                _endX = e.changedTouches[0].clientX,
+                _deltaX = _endX - _startX;
+              if (_deltaX > _stepTouch) {
+                _move('prev');
+              } else if (_deltaX < -_stepTouch) {
+                _move('next');
+              }
+              _startAutoplay();
+            });
+          } else {
+            for (var i = 0, length = _sliderControls.length; i < length; i++) {
+              _sliderControls[i].classList.add('slider__control_show');
+            }
+          }
+          _slider.addEventListener('click', function (e) {
+            if (e.target.classList.contains('slider__control')) {
+              e.preventDefault();
+              _move(e.target.classList.contains('slider__control_next') ? 'next' : 'prev');
+              _startAutoplay();
+            } else if (e.target.getAttribute('data-slide-to')) {
+              e.preventDefault();
+              _moveTo(parseInt(e.target.getAttribute('data-slide-to')));
+              _startAutoplay();
+            }
+          });
+          document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === "hidden") {
+              _stopAutoplay();
+            } else {
+              _startAutoplay();
+            }
+          }, false);
+          if (_config.isPauseOnHover && _config.isAutoplay) {
+            _slider.addEventListener('mouseenter', function () {
+              _stopAutoplay();
+            });
+            _slider.addEventListener('mouseleave', function () {
+              _startAutoplay();
+            });
+          }
+        };
+
+        // добавляем индикаторы к слайдеру
+        _addIndicators();
+        // установливаем обработчики для событий
+        _setUpListeners();
+        // запускаем автоматическую смену слайдов, если установлен соответствующий ключ
+        _startAutoplay();
+
+        return {
+          // метод слайдера для перехода к следующему слайду
+          next: function () {
+            _move('next');
+          },
+          // метод слайдера для перехода к предыдущему слайду          
+          left: function () {
+            _move('prev');
+          },
+          // метод отключающий автоматическую смену слайдов
+          stop: function () {
+            _config.isAutoplay = false;
+            _stopAutoplay();
+          },
+          // метод запускающий автоматическую смену слайдов
+          cycle: function () {
+            _config.isAutoplay = true;
+            _startAutoplay();
+          }
+        }
+      }
+    }());
+
+    slideShow('.slider', {
+      isAutoplay: true
+    });
+  </script>
+
+  <div class="product-item">
+    <div class="product-img">
+      <a href="bassgitar.html">
+        <p> <img src="https://pop-music.ru/upload/iblock/d40/d403cc6935f10c766eb270aa43b523f1.jpg" width="100">
+      </a>
+    </div>
+    <div class="product-list">
+      <h3>Басс-Гитара</h3>
+      <div class="stars"></div>
+      <span class="price">₴ 3535,22</span>
+      <div class="actions">
+        <div class="add-to-cart">
+          <a href="" class="cart-button">В корзину</a>
+        </div>
+        <div class="add-to-links">
+          <a href="" class="wishlist"></a>
+          <a href="" class="compare"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="fleyt">
+    <div class="flyt-img">
+      <a href="flyt.html">
+        <img
+          src="data:image/jpeg;base64,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"
+          width="100">
+        </p>
+      </a>
+    </div>
+    <div class="product-list">
+      <h3>Флейта</h3>
+      <div class="stars"></div>
+      <span class="price">₴ 4 500</span>
+      <div class="actions">
+        <div class="add-to-cart">
+          <a href="" class="cart-button">В корзину</a>
+        </div>
+        <div class="add-to-links">
+          <a href="" class="wishlist"></a>
+          <a href="" class="compare"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="skripka">
+    <div class="skripka-img">
+      <a href="sckripka.html">
+        <img
+          src="https://usilok.com.ua/image/cache/catalog/products/muzykalnyye_instrumenty/smuchkovue/9/Skrypka-4-4-Strunal-Stradivarius-193wA-356x356.jpg"
+          width="200">
+
+      </a>
+    </div>
+    <div class="product-list">
+      <h3>Скрипка </h3>
+      <div class="stars"></div>
+      <span class="price">₴ 15 000</span>
+      <div class="actions">
+        <div class="add-to-cart">
+          <a href="" class="cart-button">В корзину</a>
+        </div>
+        <div class="add-to-links">
+          <a href="" class="wishlist"></a>
+          <a href="" class="compare"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="saks">
+    <div class="skripka-img">
+      <a href="sckripka.html">
+        <img
+          src="https://i1.rozetka.ua/goods/4822361/stagg_ws_as215s_images_4822361080.jpg"
+          width="200">
+
+      </a>
+    </div>
+    <div class="product-list">
+      <h3>Саксофон </h3>
+      <div class="stars"></div>
+      <span class="price">₴ 12 240</span>
+      <div class="actions">
+        <div class="add-to-cart">
+          <a href="" class="cart-button">В корзину</a>
+        </div>
+        <div class="add-to-links">
+          <a href="" class="wishlist"></a>
+          <a href="" class="compare"></a>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+</body>
